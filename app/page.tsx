@@ -18,9 +18,10 @@ export default async function Home() {
         <Image
           src="/images/hero.webp"
           alt="Forms Dashboard Hero"
-          width={800}
-          height={400}
+          width={660}
+          height={370}
           priority
+          sizes="(max-width: 768px) 100vw, 660px"
           className="rounded-lg w-full h-auto"
         />
 
