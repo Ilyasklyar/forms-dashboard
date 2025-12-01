@@ -1,52 +1,61 @@
-import fs from "fs";
-import path from "path";
 import { Form, FormData } from "./schemas/form.schemas";
-import { formSchema } from "./schemas/form.schemas";
 
-const filePath = path.join(process.cwd(), "data", "forms.json");
-
-function readForms(): Form[] {
-  if (!fs.existsSync(filePath)) return [];
-  const json = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(json);
-}
-
-function writeForms(forms: Form[]) {
-  fs.writeFileSync(filePath, JSON.stringify(forms, null, 2));
-}
+let forms: Form[] = [
+  {
+    id: "1",
+    title: "Form 1",
+    description: "description 1",
+    fieldsCount: 3,
+    status: "draft",
+    updatedAt: "2025-11-20T00:00:00Z",
+  },
+  {
+    id: "2",
+    title: "Form 2",
+    description: "description 2",
+    fieldsCount: 5,
+    status: "active",
+    updatedAt: "2025-11-30T00:00:00Z",
+  },
+  {
+    id: "3",
+    title: "Form 3",
+    description: "description 3",
+    fieldsCount: 10,
+    status: "archived",
+    updatedAt: "2025-11-10T00:00:00Z",
+  },
+];
 
 export const formsStore = {
   getAll: (): Form[] =>
-    readForms().sort(
-      (a, b) =>
-        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-    ),
-  getById: (id: string) => readForms().find((f) => f.id === id),
+    forms
+      .slice()
+      .sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+      ),
+
+  getById: (id: string) => forms.find((f) => f.id === id),
+
   create: (data: FormData) => {
     const newForm: Form = {
-      ...formSchema.parse(data),
+      ...data,
       id: Date.now().toString(),
       updatedAt: new Date().toISOString(),
     };
-    const forms = readForms();
     forms.push(newForm);
-    writeForms(forms);
     return newForm;
   },
+
   update: (id: string, data: FormData) => {
-    const forms = readForms();
     const idx = forms.findIndex((f) => f.id === id);
     if (idx === -1) return null;
-    forms[idx] = {
-      ...formSchema.parse(data),
-      id,
-      updatedAt: new Date().toISOString(),
-    };
-    writeForms(forms);
+    forms[idx] = { ...data, id, updatedAt: new Date().toISOString() };
     return forms[idx];
   },
+
   remove: (id: string) => {
-    const forms = readForms().filter((f) => f.id !== id);
-    writeForms(forms);
+    forms = forms.filter((f) => f.id !== id);
   },
 };
