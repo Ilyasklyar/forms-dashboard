@@ -20,11 +20,7 @@ export default async function FormPage() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Forms</h1>
 
-      {forms.length === 0 ? (
-        <p>No forms available or failed to load</p>
-      ) : (
-        <FormPageUI forms={forms} isAdmin={isAdmin} />
-      )}
+      <FormPageUI forms={forms} isAdmin={isAdmin} />
     </div>
   );
 }

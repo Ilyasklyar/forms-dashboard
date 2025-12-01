@@ -46,7 +46,7 @@ export default function FormPageUI({ forms, isAdmin }: FormPageUIProps) {
           </Link>
         )}
 
-        <div className="flex gap-2 items-center justify-end">
+        <div className="flex gap-2 items-center justify-end md:w-full">
           <span>Filter:</span>
           <select
             value={filter}
