@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forms Dashboard App
 
-## Getting Started
+A simple dashboard for managing forms with authentication via NextAuth.
 
-First, run the development server:
+## Technologies Used
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- NextAuth
+- Zod
+
+## Features
+
+- Authentication (Admin and Individual roles)
+- Create, update, delete forms (Admin only)
+- Filter forms by status
+- Server-side rendering
+- Responsive design
+- SEO-friendly setup
+
+## Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Ilyasklyar/forms-dashboard.git
+cd forms-dashboard
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file:
+
+```bash
+cp .env.example .env.local
+```
+
+Then edit `.env.local`:
+
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret_key_here
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Admin users** can create, update, and delete forms
+- **Individual users** can view forms
+- Filter forms by status using the dropdown
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Dashboard Screenshot](images/screen1.png)
+![Dashboard Screenshot](images/screen2.png)
