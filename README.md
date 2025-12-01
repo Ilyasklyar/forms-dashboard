@@ -64,5 +64,5 @@ Open http://localhost:3000 in your browser.
 
 ## Screenshots
 
-![Dashboard Screenshot](/images/screen1.png)
-![Dashboard Screenshot](/images/screen2.png)
+![Dashboard Screenshot](./public/images/screen1.png)
+![Dashboard Screenshot](./public/images/screen2.png)
