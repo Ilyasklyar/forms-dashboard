@@ -49,7 +49,6 @@ export default function CreateUpdateForm({
         showToast("Form created successfully", "success");
       }
 
-      router.refresh();
       router.push("/forms");
     } catch (err) {
       console.log(err);
